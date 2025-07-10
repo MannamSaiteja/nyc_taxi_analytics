@@ -1,0 +1,53 @@
+file_analyzed: green_tripdata_2025-04.parquet
+gcs_path: gs://nyc_taxi_analysis_project/raw/green_tripdata_2025-04.parquet
+file_size: 1.2 MB
+
+record_count_estimate: ~3,000 (based on invalid trip counts)
+
+schema_summary:
+  - VendorID: integer
+  - lpep_pickup_datetime: timestamp_ntz
+  - lpep_dropoff_datetime: timestamp_ntz
+  - store_and_fwd_flag: string
+  - RatecodeID: long
+  - PULocationID: integer
+  - DOLocationID: integer
+  - passenger_count: long
+  - trip_distance: double
+  - fare_amount: double
+  - tip_amount: double
+  - total_amount: double
+  - congestion_surcharge: double
+  - cbd_congestion_fee: double
+  # ... rest as observed
+
+null_counts:
+  store_and_fwd_flag: 3,188
+  RatecodeID: 3,188
+  passenger_count: 3,188
+  payment_type: 3,188
+  trip_type: 3,195
+  ehail_fee: 52,132
+
+issues_detected:
+  - 3,188 records have NULLs in key fields: RatecodeID, passenger_count, payment_type
+  - 52,132 NULLs in ehail_fee — consider dropping this column (useless)
+  - 2,922 records with trip_distance <= 0 — needs to be filtered
+  - No nulls in timestamp, location, fare — good baseline
+
+deduplication_hint:
+  - lpep_pickup_datetime has many identical values across different trips
+  - Deduplication should use:
+      VendorID + lpep_pickup_datetime + trip_distance + PULocationID + DOLocationID
+
+bronze_plan:
+  - Add ingestion metadata: ingestion_date, source_file
+  - Preserve all raw data as-is for traceability
+
+silver_plan:
+  - Drop or impute nulls in store_and_fwd_flag, passenger_count, etc.
+  - Drop `ehail_fee`
+  - Filter out records with trip_distance <= 0
+  - Cast columns to correct types (already parsed in Parquet)
+  - Apply deduplication by defined business key
+
