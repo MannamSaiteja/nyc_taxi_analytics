@@ -2,7 +2,7 @@
 🔍 **Overview:**
 This project is a real-world batch data pipeline built using Databricks, PySpark, Delta Lake, and databricks dashboard, simulating how modern tech companies ingest, process, and analyze high-volume datasets.
 
-We use NYC Taxi trip data to build a complete ETL pipeline from ingestion to gold-level analytics and dashboards. The goal is to show how data engineers can create scalable, production-ready pipelines with validation, orchestration, and business-focused insights.
+I used NYC Taxi trip data(2021 -2025) to build a complete ETL pipeline from ingestion to gold-level analytics and dashboards. The goal is to show how data engineers can create scalable, production-ready pipelines with validation, orchestration, and business-focused insights.
 
 🎯 **Business Objective:**
 The aim is to enable:
