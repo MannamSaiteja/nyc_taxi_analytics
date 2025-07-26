@@ -1,10 +1,10 @@
 # 🚖 NYC Taxi Analytics Platform
-🔍 Overview
+🔍** Overview:**
 This project is a real-world batch data pipeline built using Databricks, PySpark, Delta Lake, and databricks dashboard, simulating how modern tech companies ingest, process, and analyze high-volume datasets.
 
 We use NYC Taxi trip data to build a complete ETL pipeline from ingestion to gold-level analytics and dashboards. The goal is to show how data engineers can create scalable, production-ready pipelines with validation, orchestration, and business-focused insights.
 
-🎯 Business Objective
+🎯 **Business Objective:**
 The aim is to enable:
 
 Taxi fleet managers to identify high-revenue zones and optimize dispatch
@@ -15,7 +15,7 @@ Finance teams to analyze monthly revenue, payment trends, and fare breakdowns
 
 Data teams to run automated, traceable, and incremental data pipelines
 
-🧱 Architecture
+🧱 **Architecture:**
 The project follows a classic Medallion Architecture:
 
 Raw Data (.parquet)
@@ -40,7 +40,7 @@ Dashboards
     • Pickup/drop-off heatmaps
     • Payment method analysis
     
-⚙️ Tools & Technologies
+⚙️ **Tools & Technologies:**
 Tool	Purpose
 Databricks	Unified platform for PySpark execution
 Delta Lake	ACID-compliant data lake
@@ -48,7 +48,7 @@ GCS	Cloud storage (optional for raw files)
 PySpark	Scalable distributed processing
 Databricks for Interactive dashboards for insights
 
-🪜 ETL Pipeline Breakdown
+🪜 **ETL Pipeline Breakdown:**
 1️⃣ Raw → Bronze
 Reads NYC Green Taxi data in .parquet format
 
@@ -78,7 +78,7 @@ Payment type distributions
 
 Stores as fact & dimensional marts
 
-📊 Dashboards
+📊 **Dashboards:**
 Built using Power BI on top of the Gold Layer:
 
 Monthly Revenue Report
@@ -91,20 +91,20 @@ Top 10 Pickup/Drop Zones
 
 These dashboards simulate executive-level reporting and can be refreshed daily using batch scheduling.
 
-✅ Features
-✅ Incremental ingestion (no duplicate processing)
+✅ **Features:**
+ Incremental ingestion (no duplicate processing)
 
-✅ Data validation & schema enforcement
+Data validation & schema enforcement
 
-✅ Surrogate key generation for warehouse compatibility
+Surrogate key generation for warehouse compatibility
 
-✅ Bronze–Silver–Gold medallion architecture
+Bronze–Silver–Gold medallion architecture
 
-✅ Built for cloud or local Databricks environments
+Built for cloud or local Databricks environments
 
-✅ Real-world dashboards aligned to business KPIs
+Real-world dashboards aligned to business KPIs
 
-📌 How to Run
+📌 **How to Run:**
 Launch Databricks Community or Free Edition
 
 Upload and run notebooks in order:
@@ -119,14 +119,14 @@ Connect to Databricks SQL endpoint or export CSVs
 
 Open dashboards to visualize metrics
 
-📈 Sample Use Cases
+📈 **Sample Use Cases:**
 Use Case	Description
 Fleet optimization	Identify high-volume boroughs to prioritize cabs
 Dynamic pricing	Analyze peak hours by pickup datetime
 Fraud detection	Flag abnormally short trips or negative fares
 Revenue reporting	Track total fares and tip amounts over time
 
-🧠 What I Learned
+🧠 **What I Learned:**
 Building scalable, modular pipelines using PySpark
 
 Working with real-world messy datasets
